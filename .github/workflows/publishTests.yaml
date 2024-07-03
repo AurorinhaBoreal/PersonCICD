@@ -1,5 +1,5 @@
-name: Build and Publish Tests/Reports
-run-name: ${{ github.actor }} is publishing SonarLint and SpotBugs Reports of the Software
+name: Build and Test Software
+run-name: ${{ github.actor }} pushed new Changes...
 on: [push]
 jobs:
   build-main:
