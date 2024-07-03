@@ -1,5 +1,4 @@
-name: Build and Publish Tests/Reports
-run-name: ${{ github.actor }} is publishing SonarLint and SpotBugs Reports of the Software
+run-name: ${{ github.actor }} is building and Testing Software
 on: [push]
 jobs:
   Build_and_Test_Project:
@@ -20,14 +19,13 @@ jobs:
       
       - name: Run Unitary Tests
         run: ./gradlew test
-        
+  
       - name: Publish Sonarlint Results
         uses: jwgmeligmeyling/spotbugs-github-action@v1.2
         with:
           name: Sonarlint
           title: Sonarlint report
           path: build/reports/sonarlint/*.xml
-          
       - name: Publish Spotbugs Results
         uses: jwgmeligmeyling/spotbugs-github-action@v1.2
         with:
