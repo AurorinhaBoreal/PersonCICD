@@ -13,6 +13,9 @@ import com.demo.cicd.exception.InvalidEquationException;
  */
 @SpringBootApplication
 public class CicdApplication {
+	/**
+	 * This Logger, it... log things LOL
+	 */
 	private static final Logger MyLogger = LoggerFactory.getLogger(CicdApplication.class);
 
 	public static void main(final String[] args) {
@@ -43,15 +46,19 @@ public class CicdApplication {
 		switch (e) {
 			case "1":
 				result = n1 + n2;
+				MyLogger.info("Returns the addition result");
 				return result;
 			case "2":
 				result = n1 - n2;
+				MyLogger.info("Returns the subtraction result");
 				return result;
 			case "3":
 				result = n1 * n2;
+				MyLogger.info("Returns the multiplication result");
 				return result;
 			case "4":
 				result = n1 / n2;
+				MyLogger.info("Returns the division result");
 				return result;
 			default:
 				throw new InvalidEquationException("Please inform a valid equation");
