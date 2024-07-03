@@ -2,7 +2,7 @@ name: Build and Test Software
 run-name: ${{ github.actor }} pushed new Changes...
 on: [push]
 jobs:
-  build-main:
+  Project:
     runs-on: ubuntu-latest
     steps:
       - name: Build Up Project
