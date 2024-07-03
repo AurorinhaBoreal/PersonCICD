@@ -19,7 +19,7 @@ public class CicdApplication {
 	private static final Logger MyLogger = LoggerFactory.getLogger(CicdApplication.class);
 
 	public static void main(final String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in, "UTF-8");
 		MyLogger.info("Inform a number:");
 
 		int n1 = getNumber(scanner);
