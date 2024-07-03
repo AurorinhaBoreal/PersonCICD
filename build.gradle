@@ -29,6 +29,12 @@ spotbugsMain {
   }
 }
 
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(17)
@@ -40,8 +46,8 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.springframework.boot:spring-boot-starter:2.6.1'
-  implementation 'org.springframework.boot:spring-boot-starter-logging:2.6.1'
+  implementation 'org.springframework.boot:spring-boot-starter'
+  implementation 'org.springframework.boot:spring-boot-starter-logging'
   testImplementation 'org.springframework.boot:spring-boot-starter-test'
   testImplementation 'junit:junit:4.13.1'
   compileOnly 'org.projectlombok:lombok'
@@ -50,4 +56,10 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+	testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+        showStandardStreams = true
+        exceptionFormat "full"
+    }
 }
