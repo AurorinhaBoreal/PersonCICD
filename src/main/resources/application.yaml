@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    password: ${POSTGRES_PASSWORD}
+    url: ${DB_URL}
+    username: ${POSTGRES_USER}
+  jpa:
+    hibernate:
+      ddl-auto: update # Or "create-drop"
+    show-sql: true
