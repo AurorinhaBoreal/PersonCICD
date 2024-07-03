@@ -28,7 +28,8 @@ public class CicdApplication {
 
 		int n2 = getNumber(scanner);
 
-		int result = doEquation(scanner, n1, n2);
+		String equation = getEquation(scanner);
+		int result = doEquation(equation, n1, n2);
 
 		MyLogger.info("The result is {}", result);
 	}
@@ -37,13 +38,16 @@ public class CicdApplication {
 		return scanner.nextInt();
 	}
 
-	public static int doEquation(final Scanner scanner, final int n1, final int n2) {
-		MyLogger.info("Inform the desired calculation: 1-Addition 2-Subtraction 3-Multiplication 4-Division");
+	public static String getEquation(final Scanner scanner) {
 		scanner.nextLine(); // Get the empty line
-		String e = scanner.nextLine();
+		MyLogger.info("Inform the desired calculation: 1-Addition 2-Subtraction 3-Multiplication 4-Division");
+		return scanner.nextLine();
+	}
+
+	public static int doEquation(String equation, final int n1, final int n2) {
 		int result;
 
-		switch (e) {
+		switch (equation) {
 			case "1":
 				result = n1 + n2;
 				MyLogger.info("Returns the addition result");
