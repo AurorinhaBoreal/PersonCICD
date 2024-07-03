@@ -1,25 +1,21 @@
-run-name: ${{ github.actor }} is building and Testing Software
+name: Build and Publish Tests/Reports
+run-name: ${{ github.actor }} is publishing SonarLint and SpotBugs Reports of the Software
 on: [push]
 jobs:
-  Build_and_Test_Project:
+  build-main-artifact:
     runs-on: ubuntu-latest
     steps:
-      - name: Verify Pushed Code
       - uses: actions/checkout@v3
-
-      - name: Set Up Java
       - uses: actions/setup-java@v3
         with:
           java-version: 17
           distribution: temurin
           cache: gradle
-          
-      - name: Build Up Project
       - run: ./gradlew build --no-daemon
       
       - name: Run Unitary Tests
         run: ./gradlew test
-  
+        
       - name: Publish Sonarlint Results
         uses: jwgmeligmeyling/spotbugs-github-action@v1.2
         with:
@@ -30,5 +26,4 @@ jobs:
         uses: jwgmeligmeyling/spotbugs-github-action@v1.2
         with:
           name: Spotbugs
-          title: Spotbugs Report
           path: build/reports/spotbugs/*.xml 
