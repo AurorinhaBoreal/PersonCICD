@@ -1,3 +1,6 @@
+/**
+ * This package contains classes related to the demo application.
+ */
 package com.demo.cicd;
 
 import java.util.Scanner;
@@ -12,7 +15,7 @@ import com.demo.cicd.exception.InvalidEquationException;
 public class CicdApplication {
 	private static final Logger MyLogger = LoggerFactory.getLogger(CicdApplication.class);
 
-	public static void main(String[] args) {
+	public static void main(final String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		MyLogger.info("Inform a number:");
 
