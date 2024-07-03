@@ -8,18 +8,20 @@ jobs:
       - name: Build Up Project
         uses: actions/checkout@v3
 
-      - name: Set Up Project
+      - name: Set Up Java
         uses: actions/setup-java@v3
         with:
           java-version: 17
           distribution: temurin
           cache: gradle
-      - run: ./gradlew build --no-daemon
+          
+      - name: Run Project
+        run: ./gradlew build --no-daemon
       
       - name: Run Unitary Tests
         run: ./gradlew test
         
-      - name: Sonarlint and Spotbugs Results
+      - name: Sonarlint Results
         uses: jwgmeligmeyling/spotbugs-github-action@v1.2
         with:
           name: Sonarlint
