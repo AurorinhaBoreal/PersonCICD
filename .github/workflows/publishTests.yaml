@@ -2,7 +2,7 @@ name: Build and Publish Tests/Reports
 run-name: ${{ github.actor }} is publishing SonarLint and SpotBugs Reports of the Software
 on: [push]
 jobs:
-  build-main-artifact:
+  build-main:
     runs-on: ubuntu-latest
     steps:
       - name: Build Up Project
@@ -19,14 +19,15 @@ jobs:
       - name: Run Unitary Tests
         run: ./gradlew test
         
-      - name: Publish Sonarlint Results
+      - name: Sonarlint and Spotbugs Results
         uses: jwgmeligmeyling/spotbugs-github-action@v1.2
         with:
           name: Sonarlint
-          title: Sonarlint report
+          title: Sonarlint Report
           path: build/reports/sonarlint/*.xml
       - name: Publish Spotbugs Results
         uses: jwgmeligmeyling/spotbugs-github-action@v1.2
         with:
           name: Spotbugs
+          title: Spotbugs Report
           path: build/reports/spotbugs/*.xml 
