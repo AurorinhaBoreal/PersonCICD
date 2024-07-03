@@ -1,4 +1,4 @@
-name: publish tests
+name: Build and Publish Tests/Reports
 run-name: ${{ github.actor }} is publishing SonarLint and SpotBugs Reports of the Software
 on: [push]
 jobs:
