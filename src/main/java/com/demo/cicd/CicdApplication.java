@@ -1,5 +1,6 @@
 package com.demo.cicd;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +20,7 @@ public class CicdApplication {
 	private static final Logger MyLogger = LoggerFactory.getLogger(CicdApplication.class);
 
 	public static void main(final String[] args) {
-		Scanner scanner = new Scanner(System.in, "UTF-8");
+		Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
 		MyLogger.info("Inform a number:");
 
 		int n1 = getNumber(scanner);
