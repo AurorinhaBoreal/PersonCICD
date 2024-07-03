@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlGroup;
@@ -22,7 +23,10 @@ import com.db.crud.person.fixtures.SqlProvider;
 import com.db.crud.person.repository.AddressRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.transaction.Transactional;
+
 @AutoConfigureMockMvc
+@Transactional
 @SpringBootTest(classes = { PersonApplication.class })
 @ActiveProfiles("test")
 class AddressControllerIntegrationTests {
@@ -39,6 +43,7 @@ class AddressControllerIntegrationTests {
         private AddressRequest addressDTORequest;
         String json;
 
+        @DirtiesContext
         @Test
         @DisplayName("Happy Test: Should Create Address")
         @SqlGroup({
@@ -63,6 +68,7 @@ class AddressControllerIntegrationTests {
 
         @Test
         @DisplayName("Happy Test: Should update Address")
+        @DirtiesContext
         @SqlGroup({
                         @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = SqlProvider.CLEAR_DB),
                         @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = SqlProvider.INSERT_PERSON),
@@ -84,6 +90,8 @@ class AddressControllerIntegrationTests {
                                 .andExpect(jsonPath("$.street").value(addressDTORequest.street()));
         }
 
+        @Transactional
+        @DirtiesContext
         @Test
         @DisplayName("Happy Test: Should Delete Address")
         @SqlGroup({
