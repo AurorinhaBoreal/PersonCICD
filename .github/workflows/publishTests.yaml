@@ -18,7 +18,7 @@ jobs:
       - name: Run Project
         run: ./gradlew build --no-daemon
       
-      - name: Run Unitary Tests
+      - name: Run Tests
         run: ./gradlew test
         
       - name: Sonarlint Results
@@ -27,9 +27,3 @@ jobs:
           name: Sonarlint
           title: Sonarlint Report
           path: build/reports/sonarlint/*.xml
-      - name: Publish Spotbugs Results
-        uses: jwgmeligmeyling/spotbugs-github-action@v1.2
-        with:
-          name: Spotbugs
-          title: Spotbugs Report
-          path: build/reports/spotbugs/*.xml 
