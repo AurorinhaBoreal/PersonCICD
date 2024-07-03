@@ -13,4 +13,4 @@ jobs:
           java-version: 17
           distribution: temurin
           cache: gradle
-      - run: ./gradlew build --no-daemond
+      - run: ./gradlew build --no-daemon
