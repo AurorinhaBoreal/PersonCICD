@@ -1,6 +1,3 @@
-/**
- * This package contains classes related to the demo application.
- */
 package com.demo.cicd;
 
 import java.util.Scanner;
@@ -11,6 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import com.demo.cicd.exception.InvalidEquationException;
 
+/**
+ * Main application class for the CICD demo.
+ */
 @SpringBootApplication
 public class CicdApplication {
 	private static final Logger MyLogger = LoggerFactory.getLogger(CicdApplication.class);

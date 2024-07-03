@@ -1,7 +1,6 @@
 /**
  * This package contains classes related to the demo application.
  */
-package com.demo.cicd;
 
 /**
  * This method calculates the sum of two integers.
